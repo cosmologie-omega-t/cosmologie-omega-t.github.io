@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cosmologie-omega-t.github.io/sitemap.xml
