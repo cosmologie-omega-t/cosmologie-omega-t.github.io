@@ -115,8 +115,29 @@ header .title {
   height: auto;
   object-fit: cover;
   max-height: 500px;
-  /* adapte selon le rendu que tu veux */
 }
+
+.lang-switch {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.btn-lang {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #0f172a;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.btn-lang:hover {
+  background: #334155;
+}
+
 
 
 nav[role="navigation"] {

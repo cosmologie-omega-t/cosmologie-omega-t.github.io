@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MMDH56FH');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modèle Cosmologique Ω(t) — Rétractation métrique, unification dynamique et rebond causal</title>
+    <meta name="description"
+        content="Squelette académique complet et accessible (ARIA) du modèle cosmologique Ω(t) : action effective, équations de Friedmann modifiées, perturbations, comparaisons observationnelles et perspectives." />
+    <meta name="author" content="Justin Ravat" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
+    <link rel="shortcut icon" href="../favicon.png">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Modèle Cosmologique Ω(t) — Squelette académique" />
+    <meta property="og:description"
+        content="Action effective, équations, perturbations, compatibilité observationnelle, rebond causal." />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary" />
+    <script src="../assets/js/scripts.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MMDH56FH" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header role="banner" class="wrap" aria-label="Document header">
+        <div class="title" aria-live="polite">
+            <h1 id="doc-title">Cosmological Model Ω(t) — Metric Retraction, Dynamic Unification and Causal Bounce</h1>
+            <span class="badge" aria-describedby="doc-title">Academic skeleton</span>
+        </div>
+
+        <div class="lang-switch">
+            <a href="../index.html" lang="fr" hreflang="fr" class="btn-lang">FR</a>
+            <a href="index.html" lang="en" hreflang="en" class="btn-lang">EN</a>
+        </div>
+
+        <p class="subtitle">Author: <strong>Justin Ravat</strong> • Version:
+            <time datetime="2025-04">April 2025</time>
+        </p>
+        <p class="meta" aria-label="Meta-information">
+            <span>Closed topology</span>·
+            <span>Single scalar field Ω(t)</span>·
+            <span>Dynamic c(t), G(t)</span>·
+            <span>Causal bounce</span>
+        </p>
+        <section class="hero">
+            <img src="../assets/img/banner-hero-cosmologie-de-t.jpg" alt="Cosmology Ω(t) banner" class="hero-img" />
+        </section>
+    </header>
+
+
+    <div class="wrap">
+        <main role="main" aria-label="Main content">
+            <aside role="complementary" aria-labelledby="toc-heading" class="toc">
+                <h2 id="toc-heading">Table of Contents</h2>
+                <nav aria-label="Internal summary">
+                    <a href="#abstract">0. Abstract</a>
+                    <a href="#intro">1. Introduction</a>
+                    <a href="#hyp">2. Fundamental Assumptions</a>
+                    <a href="#action">3. Action and Equations of Motion</a>
+                    <a href="#sol">4. Cosmological Solutions</a>
+                    <a href="#perturb">5. Development of Perturbations</a>
+                    <a href="#obs">6. Comparison with Observations</a>
+                    <a href="#discussion">7. Discussion</a>
+                    <a href="#conclusion">8. Conclusion & Outlook</a>
+                    <a href="#refs">References</a>
+                    <a href="#ack">Acknowledgements</a>
+                </nav>
+            </aside>
+
+            <article aria-labelledby="doc-title"
+                aria-describedby="abstract intro hyp action sol perturb obs discussion conclusion" id="paper-body">
+                <!-- 0. ABSTRACT -->
+                <section aria-labelledby="abstract">
+                    <h2 id="abstract">0. Abstract </h2>
+                    <p><strong>The Ω(t) cosmological model in a nutshell:</strong> Imagine that everything we know about
+                        the current universe relies on a model with some limitations: the so-called standard model
+                        (ΛCDM). It works well, but it invokes mysterious entities like dark energy or dark matter, whose
+                        nature remains poorly understood. To bypass these mysteries, the Ω(t) cosmological model
+                        proposes something original:
+                    </p>
+                    <ul style="margin:1em 0;">
+                        <li style="margin-bottom:1em;"><b>1. A new way of thinking about the universe:</b> The standard
+                            model says the universe has been expanding continuously since the Big Bang. Here, the Ω(t)
+                            model instead suggests that the universe has a closed topology: imagine a giant sphere.
+                            Instead of perpetual expansion, one would have a retraction, or at least a different
+                            dynamics, involving a certain form of contraction followed by a bounce (“causal bounce”).
+                        </li>
+                        <li style="margin-bottom:1em;"><b>2. The central idea:</b> Ω(t), a special field that modifies
+                            the fundamental constants. In this model, there exists a “scalar field” called Ω(t). Think
+                            of this field as an invisible fluid present everywhere, evolving slowly over time. This
+                            field would directly affect two fundamental constants of physics, normally assumed fixed:
+                            the speed of light (c) and the gravitational constant (G). These constants would no longer
+                            be frozen, but would vary slightly depending on Ω(t).
+                        </li>
+                        <li style="margin-bottom:1em;"><b>3. Practical consequences of the model:</b> This slow, smooth
+                            variation could explain phenomena that are difficult to understand with the standard model,
+                            such as anomalies observed in the cosmic microwave background (the relic radiation from the
+                            Big Bang). It could also resolve certain complex cosmological problems, such as the origin
+                            of large-scale structures like galaxies and clusters.
+                        </li>
+                        <li style="margin-bottom:1em;"><b>4. Predictions and experimental tests:</b> The Ω(t) model is
+                            not just a nice idea: it proposes concrete tests. For example: test predictions by
+                            observing specific astronomical phenomena (primordial nucleosynthesis, binary pulsars).
+                            Verify the predicted evolution of fundamental constants through precise experiments.
+                        </li>
+                        <li style="margin-bottom:1em;"><b>5. A cyclic universe with causal bounce:</b> Finally, an
+                            intriguing aspect is that this model predicts a universe capable of undergoing contraction
+                            phases followed by a bounce, potentially leading to a cyclic scenario, or at least to a
+                            different phase prior to what we currently call the Big Bang. In short, the Ω(t)
+                            cosmological model attempts to simplify and unify our understanding of the universe while
+                            providing an elegant explanation for some of today’s mysteries. It is only a hypothesis to
+                            be further explored, but it is original and potentially testable.
+                        </li>
+                    </ul>
+                </section>
+                <!-- (remaining sections: Introduction, Hypotheses, Action, etc. are already in English except for labels) -->
+                <!-- Just update their headings & meta text accordingly -->
+
+                <!-- 1. INTRODUCTION -->
+                <section id="intro" aria-labelledby="intro-h2">
+                    <h2 id="intro-h2">1. Introduction</h2>
+                    <ul>
+                        <li>Limits of $\Lambda$CDM: reliance on undetected dark energy/matter, ad hoc inflation,
+                            $H_0$ and $S_8$ tensions, CMB anomalies.</li>
+                        <li>Motivation: metric/constant unification via a single field $\Omega(t)$; a cyclic scenario
+                            avoiding a singularity.</li>
+                        <li>Central idea: slow variations of $c(t)$ and $G(t)$ induced by $\Omega(t)$, producing a
+                            <strong>metric retraction</strong> and a <strong>causal bounce</strong>.
+                        </li>
+                    </ul>
+                    <div class="callout" role="note" aria-label="Note">
+                        <strong>Positioning note:</strong> aim to minimize exotic assumptions while remaining testable
+                        via
+                        BBN, CMB, LLR, binary pulsars, and spectroscopy-based bounds on constants.
+                    </div>
+                </section>
+
+                <!-- 2. ASSUMPTIONS -->
+                <section id="hyp" aria-labelledby="hyp-h2">
+                    <h2 id="hyp-h2">2. Fundamental Assumptions</h2>
+                    <ul>
+                        <li>Closed universe ($k=+1$), FLRW metric:
+                            $\mathrm{d}s^2 = -c^2(t)\,\mathrm{d}t^2 + a^2(t)\,\gamma_{ij}\,\mathrm{d}x^i \mathrm{d}x^j$.
+                        </li>
+                        <li>Scalar field $\Omega(t)$ with slow-roll evolution (potentially non-canonical kinetic term).
+                        </li>
+                        <li>Dynamic functions: $c(\Omega)$, $G(\Omega)$, and possibly $\alpha(\Omega)$ via couplings.
+                        </li>
+                        <li>Minimal matter coupling <em>or</em> conformal metric
+                            $\tilde g_{\mu\nu} = A^2(\Omega)\, g_{\mu\nu}$ (to be specified).</li>
+                        <li>Temporal windows of validity: BBN consistency; local bounds
+                            ($\dot G/G$, $\dot \alpha/\alpha$).</li>
+                    </ul>
+                </section>
+
+                <!-- 3. ACTION & EOM -->
+                <section id="action" aria-labelledby="action-h2">
+                    <h2 id="action-h2">3. Action and Equations of Motion</h2>
+
+                    <h3 id="action-forme">3.1 Effective action (general form)</h3>
+                    <div class="eq" role="math" aria-label="Effective action">
+                        $$
+                        S = \int \! \mathrm{d}^4x \, \sqrt{-g} \left[ \frac{c^3(\Omega)}{16\pi \, G(\Omega)} \, R
+                        \; - \; \frac{1}{2} \, K(\Omega) \, g^{\mu\nu} \partial_{\mu}\Omega \, \partial_{\nu}\Omega
+                        \; - \; V(\Omega) \right]
+                        \; + \; S_{\mathrm{m}}\big[\psi,\, A^2(\Omega) g_{\mu\nu};\, c(\Omega)\big] .
+                        $$
+                    </div>
+                    <p>Where $K(\Omega)$ is the kinetic function (allowing non-canonical cases), $V(\Omega)$ the
+                        potential,
+                        and a possible conformal coupling $A(\Omega)$ to matter fields $\psi$. The $c(\Omega)$ and
+                        $G(\Omega)$
+                        dependences encode the dynamics of the “constants”.</p>
+
+                    <h3 id="eom">3.2 Equations of motion</h3>
+                    <p>Variation with respect to $g_{\mu\nu}$ and $\Omega$:</p>
+                    <div class="eq" role="math" aria-label="Equations of motion">
+                        $$
+                        \frac{c^3}{8\pi G} G_{\mu\nu} + \dots = T^{(\Omega)}_{\mu\nu} + T^{(\mathrm{m})}_{\mu\nu},
+                        \qquad
+                        \frac{1}{\sqrt{-g}} \partial_{\mu}\!\left( \sqrt{-g} \, K(\Omega) \, \partial^{\mu}\!\Omega
+                        \right) - V'(\Omega) + \mathcal{S}_{\mathrm{int}} = 0 .
+                        $$
+                    </div>
+                    <p>Here $\mathcal{S}_{\mathrm{int}}$ encodes source terms arising from the $c(\Omega)$ and
+                        $G(\Omega)$
+                        dependences, and from the matter coupling $A(\Omega)$.</p>
+
+                    <h3 id="friedmann">3.3 Modified Friedmann equations (FLRW, $k=+1$)</h3>
+                    <div class="eq" role="math" aria-label="Modified Friedmann">
+                        $$
+                        H^2 \equiv \left(\frac{\dot a}{a}\right)^2 = \frac{8\pi G(\Omega)}{3}\,\rho_{\text{tot}} -
+                        \frac{c^2(\Omega)}{a^2}
+                        \; + \; \Delta_{\mathrm{var}}(\dot \Omega,\Omega),
+                        \\[4pt]
+                        \frac{\ddot a}{a} = -\frac{4\pi G(\Omega)}{3}\,(\rho_{\text{tot}}+3p_{\text{tot}}/c^2)
+                        \; + \; \Xi_{\mathrm{var}}(\dot \Omega, \ddot \Omega, \Omega).
+                        $$
+                    </div>
+                    <p>The terms $\Delta_{\mathrm{var}}$ and $\Xi_{\mathrm{var}}$ collect corrections coming from
+                        derivatives of
+                        $\Omega$ and from the variations of $c$ and $G$.</p>
+
+                    <h3 id="continuite">3.4 Conservation / continuity equations</h3>
+                    <div class="eq" role="math" aria-label="Continuity">
+                        $$
+                        \dot \rho_{\text{tot}} + 3H\,(\rho_{\text{tot}} + p_{\text{tot}}/c^2) =
+                        \mathcal{Q}(\Omega,\dot\Omega),
+                        $$
+                    </div>
+                    <p>where $\mathcal{Q}$ parameterizes effective energy exchange due to varying “constants”
+                        and possible non-minimal couplings.</p>
+
+                    <h3 id="eom-omega">3.5 Field equation for $\Omega$ (homogeneous background)</h3>
+                    <div class="eq" role="math" aria-label="Omega field equation">
+                        $$
+                        K(\Omega)\,\ddot \Omega + 3HK(\Omega)\,\dot \Omega + \tfrac{1}{2}K'(\Omega)\,\dot\Omega^2 +
+                        V'(\Omega) = J(\Omega; c', G', A'),
+                        $$
+                    </div>
+                    <p>The source term $J$ gathers the contributions induced by $c(\Omega)$, $G(\Omega)$ and
+                        $A(\Omega)$.</p>
+
+                    <div class="callout" role="note" aria-label="Dimensions">
+                        <strong>Dimensions & normalization.</strong> Specify the convention ($c_0=1$ or not), the
+                        dimension of
+                        $\Omega$, and the normalization of $K$ and $V$ to ensure dimensional consistency.
+                    </div>
+                </section>
+
+
+                <!-- 4. COSMOLOGICAL SOLUTIONS -->
+                <section id="sol" aria-labelledby="sol-h2">
+                    <h2 id="sol-h2">4. Cosmological Solutions</h2>
+                    <h3>4.1 Evolutionary Phases</h3>
+                    <ul>
+                        <li><strong>Quasi–radiative phase</strong>: $\Omega$ in slow-roll, $c$ increases moderately, $G$
+                            decreases slowly.</li>
+                        <li><strong>Apparent acceleration</strong>: effective growth of a “cosmological” term
+                            $\Lambda_{\text{eff}}(\Omega)$.</li>
+                        <li><strong>Critical transition</strong>: conditions for global collapse.</li>
+                        <li><strong>Causal bounce</strong>: vacuum pressure/non-canonical kinetic terms, possible
+                            effective sign change of $G(\Omega)$; effective inversion of the arrow of time.</li>
+                    </ul>
+
+                    <h3>4.2 Analytical Criteria</h3>
+                    <div class="eq" role="math" aria-label="Bounce criteria">
+                        $$
+                        H=0,\quad \dot H > 0 \;\; \Rightarrow \;\; \text{bounce}; \qquad \ddot a > 0\ \text{at the
+                        critical
+                        instant}.
+                        $$
+                    </div>
+                    <p>Express $\dot H$ as a function of $\Omega$ and its derivatives to obtain an explicit bounce
+                        condition.</p>
+
+                    <h3>4.3 Examples of analytical closures</h3>
+                    <p>Toy choices for $(K,V,c,G)$: e.g. $K(\Omega)=1$, $V(\Omega)=V_0(1-e^{-\lambda \Omega})^2$,
+                        $c(\Omega)=c_0 e^{\beta \Omega}$, $G(\Omega)=G_0 e^{\gamma \Omega}$. Discuss stability and
+                        bounds.</p>
+                </section>
+
+                <!-- 5. PERTURBATIONS -->
+                <section id="perturb" aria-labelledby="perturb-h2">
+                    <h2 id="perturb-h2">5. Development of Perturbations</h2>
+                    <h3>5.1 Scalar perturbations</h3>
+                    <p>Define $\delta\Omega(\mathbf{x},t)$, Bardeen potentials $\Phi,\Psi$, Newtonian gauge. Derive
+                        the generalized Mukhanov–Sasaki equation (if applicable) with effective $c_s^2$.</p>
+                    <div class="eq" role="math" aria-label="Generalized Mukhanov–Sasaki (schematic)">
+                        $$
+                        \mathcal{R}'' + 2\frac{z'}{z}\,\mathcal{R}' + c_s^2 k^2 \mathcal{R} = \mathcal{S}_{\rm
+                        var}(\Omega), \quad z^2 \propto a^2 K(\Omega) \frac{\dot\Omega^2}{H^2} .
+                        $$
+                    </div>
+
+                    <h3>5.2 CMB spectrum and signatures</h3>
+                    <ul>
+                        <li>Quasi-invariance of $\mathcal{P}_\mathcal{R}(k)$ (effective slow-roll parameters).</li>
+                        <li>SW/ISW effects due to the slow evolution of $\Omega$.</li>
+                        <li>Suppression at low $\ell$: estimate the amplitude and compare with Planck anomalies.</li>
+                    </ul>
+
+                    <h3>5.3 Tensor modes</h3>
+                    <p>Expected amplitude $r$, phase velocity potentially modified by $c(\Omega)$; constraints from
+                        gravitational waves (CMB B-modes, LIGO/Virgo/KAGRA).</p>
+                </section>
+
+                <!-- 6. OBSERVATIONS -->
+                <section id="obs" aria-labelledby="obs-h2">
+                    <h2 id="obs-h2">6. Comparison with Observations</h2>
+                    <div class="grid2">
+                        <div>
+                            <h3>6.1 BBN</h3>
+                            <p>Compatibility of abundances (He, D, Li) under slow variations of $G$ and $c$ during
+                                BBN; indicate admissible windows.</p>
+                        </div>
+                        <div>
+                            <h3>6.2 CMB</h3>
+                            <p>Positions of acoustic peaks (angular horizon), amplitude and tilt; low power at low
+                                $\ell$; integrated ISW.</p>
+                        </div>
+                        <div>
+                            <h3>6.3 Local tests</h3>
+                            <ul>
+                                <li>Lunar Laser Ranging: bound on $\dot G/G$.</li>
+                                <li>Binary pulsars: gravitational energy loss.</li>
+                                <li>Atomic spectroscopy: $\dot\alpha/\alpha$ if $\alpha(\Omega)$.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>6.4 Large-scale structures</h3>
+                            <p>Linear growth $f\sigma_8$, impact of variations of $G_{\text{eff}}$ and $c$ on
+                                $D_+(z)$, BAO comparison.</p>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- 7. DISCUSSION -->
+                <section id="discussion" aria-labelledby="discussion-h2">
+                    <h2 id="discussion-h2">7. Discussion</h2>
+                    <h3>7.1 Strengths</h3>
+                    <ul>
+                        <li>No <em>exotic</em> dark matter/energy (reinterpretation through dynamics of constants).</li>
+                        <li>Geometric unification via $\Omega$.</li>
+                        <li>Cyclic scenario avoiding singularity.</li>
+                    </ul>
+                    <h3>7.2 Limitations & sensitive points</h3>
+                    <ul>
+                        <li>Choice of $K,V,c(\Omega),G(\Omega),A(\Omega)$: stability, causality, absence of
+                            Ostrogradskian instabilities.</li>
+                        <li>Tight observational constraints (BBN, CMB, LLR).</li>
+                        <li>Weak equivalence principle: Eötvös tests if non-minimal matter coupling.</li>
+                    </ul>
+                    <h3>7.3 Predictions & tests</h3>
+                    <ul>
+                        <li>Subtle deviations in ISW and $f\sigma_8$.</li>
+                        <li>GW signatures (phase velocity, dispersion).</li>
+                        <li>Secular measurable evolution of constants ($\dot G, \dot c, \dot\alpha$) at predicted
+                            levels.</li>
+                    </ul>
+                </section>
+
+                <!-- 8. CONCLUSION -->
+                <section id="conclusion" aria-labelledby="conclusion-h2">
+                    <h2 id="conclusion-h2">8. Conclusion & Outlook</h2>
+                    <ul>
+                        <li>Summary: metric retraction, $c(t)$ and $G(t)$ dynamics via $\Omega$, causal bounce.</li>
+                        <li>Next steps:
+                            <ul>
+                                <li>Implementation of a modified <strong>CLASS/CAMB</strong> module (background +
+                                    perturbations).</li>
+                                <li>Parameter scan: fitting BBN/CMB/BAO/LLR.</li>
+                                <li>Drafting of a preprint (gr-qc, astro-ph) and request for feedback.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- REFERENCES (simple placeholder, to be replaced by bibtex if needed) -->
+                <section id="refs" aria-labelledby="refs-h2">
+                    <h2 id="refs-h2">References (selection, to be expanded)</h2>
+                    <ol>
+                        <li>Planck Collaboration: CMB power spectra & anomalies.</li>
+                        <li>LLR constraints on $\dot G/G$.</li>
+                        <li>Binary pulsars: gravitational radiation tests.</li>
+                        <li>Bounds on varying constants ($\alpha, c, G$) from spectroscopy and clocks.</li>
+                        <li>Alternative cosmologies with bounces and varying constants.</li>
+                    </ol>
+                </section>
+
+                <!-- ACKNOWLEDGEMENTS -->
+                <section id="ack" aria-labelledby="ack-h2">
+                    <h2 id="ack-h2">Acknowledgements</h2>
+                    <p>Theory für Héloïse.</p>
+                </section>
+
+            </article>
+        </main>
+    </div>
+
+    <footer role="contentinfo" class="wrap" aria-label="Pied de page">
+        <p>© <time>
+                <script>document.write(new Date().getFullYear())</script>
+            </time> Justin Ravat.</p>
+    </footer>
+
+</body>
+
+</html>
