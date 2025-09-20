@@ -1,0 +1,221 @@
+/* ========== Variables & base ========== */
+:root{
+  --bg:#0b1020;        /* fond */
+  --panel:#0f172a;     /* bandeaux/cartes */
+  --text:#e5e7eb;      /* texte principal */
+  --muted:#94a3b8;     /* texte atténué */
+  --accent:#38bdf8;    /* accent */
+  --link:#93c5fd;      /* liens */
+  --code:#0b1220;      /* fond équations */
+  --card:#111827;      /* carte */
+  --border:#1f2937;    /* bordures */
+  --maxw:1000px;       /* largeur de contenu */
+}
+
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#ffffff;
+    --panel:#ffffff;
+    --text:#111827;
+    --muted:#4b5563;
+    --accent:#0369a1;
+    --link:#0ea5e9;
+    --code:#f3f4f6;
+    --card:#ffffff;
+    --border:#e5e7eb;
+  }
+}
+
+/* Reset minimal & typographie */
+html,body{height:100%}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.1) 50%,var(--bg));
+  color:var(--text);
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+h1,h2,h3{line-height:1.2}
+h1{font-size:clamp(1.4rem,4.5vw,2.2rem);margin:0}
+a{color:var(--link);text-decoration:underline}
+a:hover{color:#fff}
+code,kbd,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace}
+
+/* ========== Layout global ========== */
+.wrap{max-width:var(--maxw);margin-inline:auto;padding:20px}
+header[role="banner"]{background:var(--panel);border-bottom:1px solid var(--border)}
+header .title{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.subtitle{color:var(--muted)}
+
+nav[role="navigation"]{background:color-mix(in oklab, var(--panel), black 10%);border-bottom:1px solid var(--border)}
+nav .wrap{display:flex;gap:10px;align-items:center;overflow:auto;padding-block:10px}
+nav a{
+  white-space:nowrap;
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:6px 10px;
+  text-decoration:none;
+  color:var(--text)
+}
+nav a:hover{border-color:var(--accent)}
+
+main[role="main"]{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+
+/* ========== TOC (aside) & cartes ========== */
+aside[role="complementary"]{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px
+}
+.toc h2{font-size:1rem;margin:0 0 8px}
+.toc nav{display:flex;flex-direction:column;gap:8px}
+.toc a{
+  display:block;
+  padding:10px 12px;
+  line-height:1.3;
+  color:var(--muted);
+  text-decoration:none;
+  border:1px solid var(--border);
+  border-radius:12px;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  hyphens:auto
+}
+.toc a:hover{color:var(--text)}
+
+section{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px
+}
+section h2{margin-top:0;font-size:clamp(1.1rem,2.5vw,1.35rem)}
+.badge{
+  display:inline-block;font-size:12px;background:color-mix(in oklab, var(--panel), black 5%);
+  border:1px solid var(--border);padding:2px 8px;border-radius:999px;color:var(--muted)
+}
+.callout{border-left:4px solid var(--accent);padding:10px 14px;background:color-mix(in oklab, var(--panel), black 10%);border-radius:8px}
+.eq{background:var(--code);border:1px dashed var(--border);padding:12px;border-radius:10px;overflow:auto}
+.meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted)}
+
+footer[role="contentinfo"]{border-top:1px solid var(--border);background:var(--panel);color:var(--muted)}
+
+/* Grilles internes */
+.grid2{display:grid;gap:16px}
+@media (min-width:720px){.grid2{grid-template-columns:1fr 1fr}}
+
+/* ========== RESPONSIVE ========== */
+/* Petits écrans (par défaut) : 1 colonne, paddings compacts */
+@media (max-width:480px){
+  .wrap{padding:14px}
+  nav .wrap{gap:8px}
+  section{padding:14px}
+  .eq{padding:10px}
+}
+
+/* Moyens écrans : un peu plus d’air et nav chips plus grandes */
+@media (min-width:600px){
+  nav .wrap{gap:12px}
+  nav a{padding:7px 12px}
+}
+
+/* Large écrans : 2 colonnes avec TOC sticky */
+@media (min-width:1080px){
+  main[role="main"]{grid-template-columns:280px 1fr;gap:24px}
+  aside[role="complementary"]{position:sticky;top:12px;height:fit-content}
+}
+
+/* Très larges écrans : largeur de page augmentée */
+@media (min-width:1400px){
+  :root{--maxw:1200px}
+  main[role="main"]{grid-template-columns:300px 1fr}
+}
+
+/* ========== Accessibilité & confort ========== */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important}
+}
+
+/* Focus visible (clavier) */
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+/* ========== Impression ========== */
+@media print{
+  :root{
+    --bg:#fff;--panel:#fff;--text:#111;--muted:#333;--card:#fff;--border:#ddd
+  }
+  nav,.toc,.meta,.badge{display:none !important}
+  body{background:#fff}
+  .wrap{max-width:unset}
+  section{page-break-inside:avoid}
+}
+
+/* ========== Ajustements utiles ========== */
+/* Équations/MathJax : éviter les débordements */
+.MJX-TEX{max-width:100%;overflow:auto}
+
+/* Accentuer la section active dans la TOC si tu ajoutes une classe .active depuis ton script */
+.toc a.active{border-color:var(--accent);color:var(--text);font-weight:600}
+
+
+/* --- Overrides lisibilité / listes --- */
+
+/* largeur de lecture (colonne de droite) */
+#paper-body{
+  max-width: 74ch;          /* ~ mesure idéale */
+  margin-inline: auto;
+}
+
+/* rythme typographique */
+section p{ 
+  margin: 0 0 0.9em;
+  text-wrap: pretty;
+}
+section h2 + p{ margin-top: 0.3em; }
+
+/* listes plus aérées et nettes */
+section ul, section ol{
+  margin: 0.8em 0 1.2em;
+  padding-left: 1.35em;     /* aligne le texte sans le coller au bord */
+  list-style-position: outside;
+}
+section li{
+  margin: 0.55em 0;         /* espace entre items */
+}
+section li::marker{
+  color: var(--accent);     /* bullets visibles */
+  font-weight: 700;
+}
+
+/* blocs section mieux découpés */
+section{
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  border-color: color-mix(in oklab, var(--border), white 10%);
+}
+
+/* équations un peu plus claires */
+.eq{
+  background: color-mix(in oklab, var(--code), white 6%);
+  border: 1px dashed color-mix(in oklab, var(--border), white 12%);
+}
+
+/* petits écrans : un poil plus grand, plus d’air */
+@media (max-width: 600px){
+  body{ font-size: 17px; line-height: 1.7; }
+  #paper-body{ max-width: 100%; }
+  section{ padding: 16px; }
+  section ul, section ol{ padding-left: 1.1em; }
+}
+
+/* très larges écrans : on garde la mesure confortable */
+@media (min-width: 1400px){
+  #paper-body{ max-width: 76ch; }
+}
