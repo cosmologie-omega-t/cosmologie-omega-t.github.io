@@ -165,57 +165,57 @@ footer[role="contentinfo"]{border-top:1px solid var(--border);background:var(--p
 /* Accentuer la section active dans la TOC si tu ajoutes une classe .active depuis ton script */
 .toc a.active{border-color:var(--accent);color:var(--text);font-weight:600}
 
-
-/* --- Overrides lisibilité / listes --- */
-
-/* largeur de lecture (colonne de droite) */
-#paper-body{
-  max-width: 74ch;          /* ~ mesure idéale */
-  margin-inline: auto;
+/* ---- Mobile-first lisibilité ---- */
+body{
+  font-size: 17px;
+  line-height: 1.7;
+  background: var(--bg); /* supprime le gros dégradé sur mobile */
 }
 
-/* rythme typographique */
-section p{ 
-  margin: 0 0 0.9em;
-  text-wrap: pretty;
-}
-section h2 + p{ margin-top: 0.3em; }
+#paper-body{ max-width: 74ch; margin-inline: auto; }
 
-/* listes plus aérées et nettes */
-section ul, section ol{
-  margin: 0.8em 0 1.2em;
-  padding-left: 1.35em;     /* aligne le texte sans le coller au bord */
-  list-style-position: outside;
-}
-section li{
-  margin: 0.55em 0;         /* espace entre items */
-}
-section li::marker{
-  color: var(--accent);     /* bullets visibles */
-  font-weight: 700;
-}
+/* paragraphes & titres */
+section p{ margin: 0 0 0.95em; text-wrap: pretty; }
+section h2{ margin: 0 0 .6em; text-wrap: balance; }
 
-/* blocs section mieux découpés */
+/* listes */
+section ul, section ol{ margin: .6em 0 1.1em; padding-left: 1.2em; }
+section li{ margin: .55em 0; }
+section li::marker{ color: var(--accent); font-weight: 700; }
+
+/* cartes plus light sur mobile */
 section{
-  box-shadow: 0 6px 18px rgba(0,0,0,.18);
   border-color: color-mix(in oklab, var(--border), white 10%);
+  box-shadow: 0 4px 14px rgba(0,0,0,.12);
+  padding: 16px;
 }
 
-/* équations un peu plus claires */
-.eq{
-  background: color-mix(in oklab, var(--code), white 6%);
-  border: 1px dashed color-mix(in oklab, var(--border), white 12%);
+/* --- TOC repliable sur mobile --- */
+.toc{ padding: 0; overflow: hidden; }
+.toc__header{
+  display:flex; align-items:center; justify-content:space-between;
+  background: color-mix(in oklab, var(--panel), black 10%);
+  padding: 12px 14px; border-bottom: 1px solid var(--border);
+  border-top-left-radius: 16px; border-top-right-radius: 16px;
 }
-
-/* petits écrans : un poil plus grand, plus d’air */
-@media (max-width: 600px){
-  body{ font-size: 17px; line-height: 1.7; }
-  #paper-body{ max-width: 100%; }
-  section{ padding: 16px; }
-  section ul, section ol{ padding-left: 1.1em; }
+.toc__btn{
+  appearance:none;border:1px solid var(--border);background:transparent;
+  color: var(--text); border-radius:10px; padding:6px 10px; font-size:.95rem;
 }
+.toc__panel{ max-height: 0; transition:max-height .25s ease; }
+.toc--open .toc__panel{ max-height: 70vh; } /* déplie */
+.toc nav{ padding: 10px 14px 14px; display:flex; flex-direction:column; gap:8px; }
+.toc a{ padding: 10px 12px; line-height:1.3; }
 
-/* très larges écrans : on garde la mesure confortable */
-@media (min-width: 1400px){
-  #paper-body{ max-width: 76ch; }
+/* ---- Seuils ---- */
+@media (min-width: 600px){
+  body{ font-size: 17px; }
+  section{ padding: 18px; }
+}
+@media (min-width: 1080px){
+  /* sur desktop : toc toujours ouverte & sticky */
+  .toc__panel{ max-height: none; }
+  .toc{ padding: 16px; }
+  .toc__header, .toc__btn{ display:none; }
+  main[role="main"]{ grid-template-columns: 280px 1fr; gap:24px; }
 }
