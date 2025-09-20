@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modèle Cosmologique Ω(t) — Rétractation métrique, unification dynamique et rebond causal</title>
+    <meta name="description"
+        content="Squelette académique complet et accessible (ARIA) du modèle cosmologique Ω(t) : action effective, équations de Friedmann modifiées, perturbations, comparaisons observationnelles et perspectives." />
+    <meta name="author" content="Justin Ravat" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Modèle Cosmologique Ω(t) — Squelette académique" />
+    <meta property="og:description"
+        content="Action effective, équations, perturbations, compatibilité observationnelle, rebond causal." />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [["$", "$"], ["\\(", "\\)"]],
+                displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+                tags: "ams",
+                packages: { '[+]': ['noerrors'] }
+            },
+            options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg: #0b1020;
+            /* slate-950-ish */
+            --panel: #0f172a;
+            /* slate-900 */
+            --text: #e5e7eb;
+            /* gray-200 */
+            --muted: #94a3b8;
+            /* slate-400 */
+            --accent: #38bdf8;
+            /* sky-400 */
+            --link: #93c5fd;
+            /* blue-300 */
+            --code: #0b1220;
+            --card: #111827;
+            /* gray-900 */
+            --border: #1f2937;
+            /* gray-800 */
+            --success: #22c55e;
+            --warn: #f59e0b;
+            --danger: #ef4444;
+            --maxw: 1000px;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, var(--bg), #0a0f1c 50%, var(--bg));
+            color: var(--text);
+            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        }
+
+        a {
+            color: var(--link);
+            text-decoration: underline
+        }
+
+        a:hover {
+            color: white
+        }
+
+        code,
+        kbd,
+        pre {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+        }
+
+        .wrap {
+            max-width: var(--maxw);
+            margin-inline: auto;
+            padding: 24px
+        }
+
+        header[role="banner"] {
+            background: var(--panel);
+            border-bottom: 1px solid var(--border);
+        }
+
+        header .title {
+            display: flex;
+            gap: 12px;
+            align-items: baseline;
+            flex-wrap: wrap
+        }
+
+        h1 {
+            font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+            margin: 0
+        }
+
+        .subtitle {
+            color: var(--muted)
+        }
+
+        nav[role="navigation"] {
+            background: #0a1222;
+            border-bottom: 1px solid var(--border)
+        }
+
+        nav .wrap {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            overflow: auto
+        }
+
+        nav a {
+            white-space: nowrap;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 6px 12px;
+            text-decoration: none;
+            color: var(--text)
+        }
+
+        nav a:hover {
+            border-color: var(--accent)
+        }
+
+        main[role="main"] {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px
+        }
+
+        @media(min-width:1080px) {
+            main[role="main"] {
+                grid-template-columns: 300px 1fr
+            }
+
+            aside[role="complementary"] {
+                position: sticky;
+                top: 12px;
+                height: fit-content
+            }
+        }
+
+        aside[role="complementary"] {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px
+        }
+
+        .toc h2 {
+            font-size: 1rem;
+            margin: 0 0 8px
+        }
+
+        .toc a {
+            display: block;
+            padding: 10px 12px;
+            line-height: 1.3;
+            color: var(--muted);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            hyphens: auto
+        }
+
+        .toc a:hover {
+            color: var(--text)
+        }
+
+        section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px
+        }
+
+        section h2 {
+            margin-top: 0;
+            font-size: 1.35rem
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 12px;
+            background: #0b1328;
+            border: 1px solid var(--border);
+            padding: 2px 8px;
+            border-radius: 999px;
+            color: var(--muted)
+        }
+
+        .callout {
+            border-left: 4px solid var(--accent);
+            padding: 10px 14px;
+            background: #0b1428;
+            border-radius: 8px
+        }
+
+        .eq {
+            background: var(--code);
+            border: 1px dashed var(--border);
+            padding: 12px;
+            border-radius: 10px;
+            overflow: auto
+        }
+
+        .meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            color: var(--muted)
+        }
+
+        footer[role="contentinfo"] {
+            border-top: 1px solid var(--border);
+            background: var(--panel);
+            color: var(--muted)
+        }
+
+        .grid2 {
+            display: grid;
+            gap: 18px
+        }
+
+        @media(min-width:720px) {
+            .grid2 {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+
+        /* Print */
+        @media print {
+            :root {
+                --bg: #fff;
+                --panel: #fff;
+                --text: #111;
+                --muted: #333;
+                --card: #fff;
+                --border: #ddd
+            }
+
+            nav,
+            .toc,
+            .meta,
+            .badge {
+                display: none
+            }
+
+            body {
+                background: #fff
+            }
+
+            section {
+                page-break-inside: avoid
+            }
+        }
+
+        .toc nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px
+        }
+    </style>
+</head>
+
+<body>
+    <header role="banner" class="wrap" aria-label="En-tête du document">
+        <div class="title" aria-live="polite">
+            <h1 id="doc-title">Modèle Cosmologique Ω(t) — Rétractation métrique, unification dynamique et rebond causal
+            </h1>
+            <span class="badge" aria-describedby="doc-title">Squelette académique</span>
+        </div>
+        <p class="subtitle">Auteur : <strong>Justin Ravat</strong> • Version : <time datetime="2025-04">Avril
+                2025</time></p>
+        <p class="meta" aria-label="Méta-informations">
+            <span>Topologie fermée</span>·
+            <span>Champ scalaire unique Ω(t)</span>·
+            <span>c(t), G(t) dynamiques</span>·
+            <span>Rebond causal</span>
+        </p>
+    </header>
+
+
+
+    <div class="wrap">
+        <main role="main" aria-label="Contenu principal">
+            <aside role="complementary" aria-labelledby="toc-heading" class="toc">
+                <h2 id="toc-heading">Table des matières</h2>
+                <nav aria-label="Sommaire interne">
+                    <a href="#abstract">0. Résumé</a>
+                    <a href="#intro">1. Introduction</a>
+                    <a href="#hyp">2. Hypothèses fondamentales</a>
+                    <a href="#action">3. Action et équations du mouvement</a>
+                    <a href="#sol">4. Solutions cosmologiques</a>
+                    <a href="#perturb">5. Développement des perturbations</a>
+                    <a href="#obs">6. Comparaison avec les observations</a>
+                    <a href="#discussion">7. Discussion</a>
+                    <a href="#conclusion">8. Conclusion & perspectives</a>
+                    <a href="#refs">Références</a>
+                    <a href="#ack">Remerciements</a>
+                </nav>
+            </aside>
+
+            <article aria-labelledby="doc-title"
+                aria-describedby="abstract intro hyp action sol perturb obs discussion conclusion" id="paper-body">
+                <!-- 0. ABSTRACT -->
+                <section aria-labelledby="résumé">
+                    <h2 id="abstract">1. Résumé </h2>
+                    <p>Le modèle cosmologique Ω(t) en quelques mots Imagine que tout ce que nous savons sur l'univers
+                        actuel se
+                        base sur un modèle qui présente quelques limites : on appelle ça le modèle standard (ΛCDM). Il
+                        fonctionne bien, mais il fait appel à des idées mystérieuses, comme l'énergie noire ou la
+                        matière noire,
+                        dont on ne connaît toujours pas bien la nature. Pour contourner ces mystères, le modèle
+                        cosmologique
+                        Ω(t) propose quelque chose d'original :
+                    <ul style="margin:1em 0;">
+                        <li style="margin-bottom:1em;"><b>1. Une nouvelle manière de penser l'univers :</b> Le modèle
+                            standard
+                            nous dit que l'univers s'étend en permanence depuis le Big Bang. Ici, le modèle Ω(t) dit
+                            plutôt que
+                            l'univers aurait une topologie fermée : imagine une sphère géante. Au lieu d'une expansion
+                            perpétuelle, on aurait une rétractation, ou du moins une dynamique différente, liée à une
+                            certaine
+                            forme de contraction puis un rebond (« rebond causal »).</li>
+                        <li style="margin-bottom:1em;"><b>2. L'idée centrale :</b> Ω(t), un champ particulier qui
+                            modifie les
+                            constantes fondamentales Dans ce modèle, il existe un « champ scalaire » appelé Ω(t).
+                            Imagine ce
+                            champ comme une sorte de fluide invisible partout présent, qui évoluerait lentement dans le
+                            temps.
+                            Ce champ aurait un effet direct sur deux constantes fondamentales de la physique,
+                            normalement
+                            supposées fixes : La vitesse de la lumière, notée c La constante gravitationnelle, notée G
+                            Ces deux
+                            constantes ne seraient plus figées, mais elles varieraient légèrement en fonction de Ω(t).
+                        </li>
+                        <li style="margin-bottom:1em;"><b>3. Les conséquences pratiques du modèle :</b> Cette variation
+                            douce et
+                            lente pourrait expliquer des phénomènes difficiles à comprendre avec le modèle standard
+                            actuel,
+                            comme les anomalies observées dans le fond diffus cosmologique (le rayonnement micro-ondes
+                            observable dans toutes les directions du ciel, vestige du Big Bang). Ça pourrait aussi
+                            résoudre
+                            certains problèmes cosmologiques complexes, tels que l'origine des grandes structures dans
+                            l'univers, comme les galaxies et les amas galactiques. </li>
+                        <li style="margin-bottom:1em;"><b>4. Des prédictions et tests expérimentaux :</b> Le modèle Ω(t)
+                            n'est
+                            pas juste une belle idée : il propose des tests concrets. Par exemple : Tester les
+                            prédictions en
+                            observant des phénomènes astronomiques précis (nucléosynthèse primordiale, pulsars
+                            binaires).
+                            Vérifier l'évolution prédite des constantes fondamentales par des expériences précises.</li>
+                        <li style="margin-bottom:1em;"><b>5. Un univers cyclique avec rebond causal :</b> Enfin, un
+                            aspect
+                            intrigant est que ce modèle prédit un univers capable de passer par des phases de
+                            contraction, puis
+                            de rebond, ouvrant potentiellement à un scénario cyclique ou du moins à une phase différente
+                            avant
+                            ce qu'on considère aujourd'hui comme le Big Bang. En résumé, ce modèle cosmologique Ω(t)
+                            essaie de
+                            simplifier et d'unifier notre compréhension de l'univers, tout en proposant une explication
+                            élégante
+                            à certains mystères actuels. Ce n'est qu'une hypothèse à explorer davantage, mais elle est
+                            originale
+                            et potentiellement testable.</li>
+                    </ul>
+                </section>
+                <!-- 1. INTRODUCTION -->
+                <section id="intro" aria-labelledby="intro-h2">
+                    <h2 id="intro-h2">1. Introduction</h2>
+                    <ul>
+                        <li>Limites de $\Lambda$CDM : recours à énergie/matière noires non détectées, inflation ad hoc,
+                            tensions $H_0$, $S_8$, anomalies CMB.</li>
+                        <li>Motivation : unification métrique/constantes par champ unique $\Omega(t)$, scénario cyclique
+                            évitant singularité.</li>
+                        <li>Idée centrale : variations lentes de $c(t)$ et $G(t)$ induites par $\Omega(t)$, produisant
+                            une <strong>rétractation métrique</strong> et un <strong>rebond causal</strong>.</li>
+                    </ul>
+                    <div class="callout" role="note" aria-label="Note">
+                        <strong>Note de positionnement :</strong> objectif de minimiser les hypothèses exotiques tout en
+                        restant testable via BBN, CMB, LLR, pulsars binaires, spectroscopie de constantes.
+                    </div>
+                </section>
+
+                <!-- 2. HYPOTHESES -->
+                <section id="hyp" aria-labelledby="hyp-h2">
+                    <h2 id="hyp-h2">2. Hypothèses fondamentales</h2>
+                    <ul>
+                        <li>Univers fermé ($k=+1$), métrique FLRW : $\mathrm{d}s^2 = -c^2(t)\,\mathrm{d}t^2 +
+                            a^2(t)\,\gamma_{ij}\,\mathrm{d}x^i \mathrm{d}x^j$.</li>
+                        <li>Champ scalaire $\Omega(t)$ à évolution lente (slow-roll) avec cinétique potentiellement non
+                            canonique.</li>
+                        <li>Fonctions dynamiques : $c(\Omega)$, $G(\Omega)$, et éventuellement $\alpha(\Omega)$ via
+                            couplages.</li>
+                        <li>Couplage matière minimal <em>ou</em> métrique conforme $\tilde g_{\mu\nu} = A^2(\Omega)
+                            g_{\mu\nu}$ (à préciser).</li>
+                        <li>Fenêtres de validité temporelle : cohérence BBN, bornes locales ($\dot G/G$, $\dot
+                            \alpha/\alpha$).</li>
+                    </ul>
+                </section>
+
+                <!-- 3. ACTION & EOM -->
+                <section id="action" aria-labelledby="action-h2">
+                    <h2 id="action-h2">3. Action et équations du mouvement</h2>
+
+                    <h3 id="action-forme">3.1 Action effective (forme générale)</h3>
+                    <div class="eq" role="math" aria-label="Action effective">
+                        $$
+                        S = \int \! \mathrm{d}^4x \, \sqrt{-g} \left[ \frac{c^3(\Omega)}{16\pi \, G(\Omega)} \, R
+                        \; - \; \frac{1}{2} \, K(\Omega) \, g^{\mu\nu} \partial_{\mu}\Omega \, \partial_{\nu}\Omega
+                        \; - \; V(\Omega) \right]
+                        \; + \; S_{\mathrm{m}}\big[\psi,\, A^2(\Omega) g_{\mu\nu};\, c(\Omega)\big] .
+                        $$
+                    </div>
+                    <p>Avec $K(\Omega)$ la fonction cinétique (permettant des cas non canoniques), $V(\Omega)$ le
+                        potentiel, et un éventuel couplage conforme $A(\Omega)$ aux champs de matière $\psi$. Les
+                        dépendances en $c(\Omega)$ et $G(\Omega)$ reflètent la dynamique des « constantes ».</p>
+
+                    <h3 id="eom">3.2 Équations du mouvement</h3>
+                    <p>Variation par rapport à $g_{\mu\nu}$ et $\Omega$ :</p>
+                    <div class="eq" role="math" aria-label="Équations du mouvement">
+                        $$
+                        \frac{c^3}{8\pi G} G_{\mu\nu} + \dots = T^{(\Omega)}_{\mu\nu} + T^{(\mathrm{m})}_{\mu\nu},
+                        \qquad
+                        \frac{1}{\sqrt{-g}} \partial_{\mu}\!\left( \sqrt{-g} \, K(\Omega) \, \partial^{\mu}\!\Omega
+                        \right) - V'(\Omega) + \mathcal{S}_{\mathrm{int}} = 0 .
+                        $$
+                    </div>
+                    <p>Ici $\mathcal{S}_{\mathrm{int}}$ encode les termes sources issus des dépendances $c(\Omega)$,
+                        $G(\Omega)$, et du couplage matière $A(\Omega)$.</p>
+
+                    <h3 id="friedmann">3.3 Équations de Friedmann modifiées (FLRW, $k=+1$)</h3>
+                    <div class="eq" role="math" aria-label="Friedmann modifiées">
+                        $$
+                        H^2 \equiv \left(\frac{\dot a}{a}\right)^2 = \frac{8\pi G(\Omega)}{3}\,\rho_{\text{tot}} -
+                        \frac{c^2(\Omega)}{a^2}
+                        \; + \; \Delta_{\mathrm{var}}(\dot \Omega,\Omega),
+                        \\[4pt]
+                        \frac{\ddot a}{a} = -\frac{4\pi G(\Omega)}{3}\,(\rho_{\text{tot}}+3p_{\text{tot}}/c^2)
+                        \; + \; \Xi_{\mathrm{var}}(\dot \Omega, \ddot \Omega, \Omega).
+                        $$
+                    </div>
+                    <p>Les termes $\Delta_{\mathrm{var}}$ et $\Xi_{\mathrm{var}}$ regroupent les corrections provenant
+                        des dérivées de $\Omega$ et des variations de $c$ et $G$.</p>
+
+                    <h3 id="continuite">3.4 Équations de conservation / continuité</h3>
+                    <div class="eq" role="math" aria-label="Continuité">
+                        $$
+                        \dot \rho_{\text{tot}} + 3H\,(\rho_{\text{tot}} + p_{\text{tot}}/c^2) =
+                        \mathcal{Q}(\Omega,\dot\Omega),
+                        $$
+                    </div>
+                    <p>où $\mathcal{Q}$ paramétrise les échanges effectifs d’énergie dus aux variations des « constantes
+                        » et à d’éventuels couplages non minimaux.</p>
+
+                    <h3 id="eom-omega">3.5 Équation du champ $\Omega$ (fond homogène)</h3>
+                    <div class="eq" role="math" aria-label="Équation du champ Oméga">
+                        $$
+                        K(\Omega)\,\ddot \Omega + 3HK(\Omega)\,\dot \Omega + \tfrac{1}{2}K'(\Omega)\,\dot\Omega^2 +
+                        V'(\Omega) = J(\Omega; c', G', A'),
+                        $$
+                    </div>
+                    <p>Le terme source $J$ rassemble les contributions induites par $c(\Omega)$, $G(\Omega)$ et
+                        $A(\Omega)$.</p>
+
+                    <div class="callout" role="note" aria-label="Dimensions">
+                        <strong>Dimensions & normalisation.</strong> Spécifier la convention ($c_0=1$ ou non), la
+                        dimension de $\Omega$, et la normalisation de $K$ et $V$ pour assurer la bonne homogénéité
+                        dimensionnelle.
+                    </div>
+                </section>
+
+                <!-- 4. SOLUTIONS COSMO -->
+                <section id="sol" aria-labelledby="sol-h2">
+                    <h2 id="sol-h2">4. Solutions cosmologiques</h2>
+                    <h3>4.1 Phases d’évolution</h3>
+                    <ul>
+                        <li><strong>Phase quasi–radiative</strong> : $\Omega$ en slow-roll, $c$ augmente modérément, $G$
+                            diminue lentement.</li>
+                        <li><strong>Accélération apparente</strong> : croissance effective d’un terme « cosmologique »
+                            $\Lambda_{\text{eff}}(\Omega)$.</li>
+                        <li><strong>Transition critique</strong> : conditions d’effondrement global.</li>
+                        <li><strong>Rebond causal</strong> : pression de vide/termes cinétiques non canoniques, possible
+                            changement de signe effectif de $G(\Omega)$; inversion effective de la flèche du temps.</li>
+                    </ul>
+
+                    <h3>4.2 Critères analytiques</h3>
+                    <div class="eq" role="math" aria-label="Critères de rebond">
+                        $$
+                        H=0,\quad \dot H > 0 \;\; \Rightarrow \;\; \text{rebond}; \qquad \ddot a > 0\ \text{à l’instant
+                        critique}.
+                        $$
+                    </div>
+                    <p>Exprimer $\dot H$ en fonction de $\Omega$ et de ses dérivées pour obtenir une condition explicite
+                        de rebond.</p>
+
+                    <h3>4.3 Exemples de fermetures analytiques</h3>
+                    <p>Choix jouets pour $(K,V,c,G)$ : p.ex. $K(\Omega)=1$, $V(\Omega)=V_0(1-e^{-\lambda \Omega})^2$,
+                        $c(\Omega)=c_0 e^{\beta \Omega}$, $G(\Omega)=G_0 e^{\gamma \Omega}$. Discuter stabilité et
+                        bornes.</p>
+                </section>
+
+                <!-- 5. PERTURBATIONS -->
+                <section id="perturb" aria-labelledby="perturb-h2">
+                    <h2 id="perturb-h2">5. Développement des perturbations</h2>
+                    <h3>5.1 Perturbations scalaires</h3>
+                    <p>Définir $\delta\Omega(\mathbf{x},t)$, potentiel de Bardeen $\Phi,\Psi$, jauge de Newton. Obtenir
+                        l’équation de Mukhanov–Sasaki généralisée (si applicable) avec $c_s^2$ effectif.</p>
+                    <div class="eq" role="math" aria-label="Mukhanov–Sasaki généralisée (schématique)">
+                        $$
+                        \mathcal{R}'' + 2\frac{z'}{z}\,\mathcal{R}' + c_s^2 k^2 \mathcal{R} = \mathcal{S}_{\rm
+                        var}(\Omega), \quad z^2 \propto a^2 K(\Omega) \frac{\dot\Omega^2}{H^2} .
+                        $$
+                    </div>
+
+                    <h3>5.2 Spectre et signatures CMB</h3>
+                    <ul>
+                        <li>Quasi-invariance de $\mathcal{P}_\mathcal{R}(k)$ (paramètres slow-roll effectifs).</li>
+                        <li>Effets SW/ISW dus à l’évolution lente de $\Omega$.</li>
+                        <li>Suppression à bas $\ell$ : estimer l’amplitude et la comparer aux anomalies Planck.</li>
+                    </ul>
+
+                    <h3>5.3 Modes tensoriaux</h3>
+                    <p>Amplitude attendue $r$, vitesse de phase potentiellement modifiée par $c(\Omega)$; contraintes
+                        par ondes gravitationnelles (CMB B-modes, LIGO/Virgo/KAGRA).</p>
+                </section>
+
+                <!-- 6. OBSERVATIONS -->
+                <section id="obs" aria-labelledby="obs-h2">
+                    <h2 id="obs-h2">6. Comparaison avec les observations</h2>
+                    <div class="grid2">
+                        <div>
+                            <h3>6.1 BBN</h3>
+                            <p>Compatibilité des abondances (He, D, Li) sous variations lentes de $G$ et $c$ durant la
+                                BBN; indiquer fenêtres admissibles.</p>
+                        </div>
+                        <div>
+                            <h3>6.2 CMB</h3>
+                            <p>Positions des pics acoustiques (horizon angulaire), amplitude et tilt; faible pouvoir à
+                                bas $\ell$; ISW intégré.</p>
+                        </div>
+                        <div>
+                            <h3>6.3 Tests locaux</h3>
+                            <ul>
+                                <li>Lunar Laser Ranging : borne sur $\dot G/G$.</li>
+                                <li>Pulsars binaires : pertes d’énergie gravitationnelle.</li>
+                                <li>Spectroscopie atomique : $\dot\alpha/\alpha$ si $\alpha(\Omega)$.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>6.4 Grandes structures</h3>
+                            <p>Croissance linéaire $f\sigma_8$, impact des variations de $G_{\text{eff}}$ et de $c$ sur
+                                $D_+(z)$, comparaison BAO.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. DISCUSSION -->
+                <section id="discussion" aria-labelledby="discussion-h2">
+                    <h2 id="discussion-h2">7. Discussion</h2>
+                    <h3>7.1 Atouts</h3>
+                    <ul>
+                        <li>Pas de matière/énergie noires <em>exotiques</em> (réinterprétation par dynamiques de
+                            constantes).</li>
+                        <li>Unification géométrique via $\Omega$.</li>
+                        <li>Scénario cyclique avec évitement de singularité.</li>
+                    </ul>
+                    <h3>7.2 Limites & points sensibles</h3>
+                    <ul>
+                        <li>Choix de $K,V,c(\Omega),G(\Omega),A(\Omega)$ : stabilité, causalité, absence
+                            d’ostrogradskiens.</li>
+                        <li>Contraintes observationnelles serrées (BBN, CMB, LLR).</li>
+                        <li>Équivalence faible : tests Eötvös si couplage matière non minimal.</li>
+                    </ul>
+                    <h3>7.3 Prédictions & tests</h3>
+                    <ul>
+                        <li>Déviations fines dans ISW et $f\sigma_8$.</li>
+                        <li>Signatures GW (vitesse de phase, dispersion).</li>
+                        <li>Évolution séculaire mesurable de constantes ($\dot G, \dot c, \dot\alpha$) aux niveaux
+                            prévus.</li>
+                    </ul>
+                </section>
+
+                <!-- 8. CONCLUSION -->
+                <section id="conclusion" aria-labelledby="conclusion-h2">
+                    <h2 id="conclusion-h2">8. Conclusion et perspectives</h2>
+                    <ul>
+                        <li>Résumé : rétractation métrique, $c(t)$ et $G(t)$ dynamiques via $\Omega$, rebond causal.
+                        </li>
+                        <li>Étapes prochaines :
+                            <ul>
+                                <li>Implémentation d’un module <strong>CLASS/CAMB</strong> modifié (fonds +
+                                    perturbations).</li>
+                                <li>Scan de paramètres : ajustement BBN/CMB/BAO/LLR.</li>
+                                <li>Rédaction d’un preprint (gr-qc, astro-ph) et demande de feedback.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- REFERENCES (placeholder simple, à remplacer par bibtex s’il y a lieu) -->
+                <section id="refs" aria-labelledby="refs-h2">
+                    <h2 id="refs-h2">Références (sélection, à détailler)</h2>
+                    <ol>
+                        <li>Planck Collaboration: CMB power spectra & anomalies.</li>
+                        <li>LLR constraints on $\dot G/G$.</li>
+                        <li>Binary pulsars: gravitational radiation tests.</li>
+                        <li>Bounds on varying constants ($\alpha, c, G$) from spectroscopy and clocks.</li>
+                        <li>Alternative cosmologies with bounces and varying constants.</li>
+                    </ol>
+                </section>
+
+                <!-- ACKNOWLEDGEMENTS -->
+                <section id="ack" aria-labelledby="ack-h2">
+                    <h2 id="ack-h2">Remerciements</h2>
+                    <p>Theory für Héloïse.</p>
+                </section>
+            </article>
+        </main>
+    </div>
+
+    <footer role="contentinfo" class="wrap" aria-label="Pied de page">
+        <p>© <time>
+                <script>document.write(new Date().getFullYear())</script>
+            </time> Justin Ravat.</p>
+    </footer>
+
+    <script>
+        // Petite amélioration d’UX : surligner la section active dans le sommaire
+        const sections = [...document.querySelectorAll('main section[id]')];
+        const tocLinks = [...document.querySelectorAll('.toc nav a')];
+        const onScroll = () => {
+            const y = window.scrollY + 120;
+            let current = sections[0]?.id;
+            for (const s of sections) {
+                const r = s.getBoundingClientRect();
+                const top = r.top + window.scrollY;
+                if (top <= y) current = s.id;
+            }
+            tocLinks.forEach(a => a.style.fontWeight = (a.getAttribute('href') === '#' + current) ? '600' : '400');
+        };
+        document.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    </script>
+</body>
+
+</html>
